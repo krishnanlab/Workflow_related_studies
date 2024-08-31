@@ -44,7 +44,7 @@ This repository contains a  workflow for finding public RNA-seq samples and stud
 
 ### 4. Run Predictions Using MONDO Model Files
 - **Predictions**: The `predict.py` script is used to run predictions for each MONDO model file using the generated embeddings and preprocessed descriptions.
-  - Output: Prediction results saved in `prediction_results/`folder.
+  - Output: Prediction results saved in `prediction_results/`folder. This script needs also this `txt2onto2.0/data/disease_desc_embedding.npz' to run.
 
 ## How to Run the Workflow
 
