@@ -24,5 +24,30 @@ This repository contains a  workflow for finding public RNA-seq samples and stud
   - `run_preprocess.sh`: Shell script to preprocess the extracted descriptions.
   - `run_predictions.sh`: Shell script to run predictions using the MONDO model files.
 
+- **README.md**: This file, providing an overview of the project.
 
-  
+## Workflow Overview
+
+### 1. Data Extraction and Filtering
+- **Extract Descriptions**: The script `extract_data.py` reads and parses the compressed JSON metadata file located in `data/aggregated_metadata.json.gz`. It filters out entries with no descriptions based on a predefined list of terms.
+  - Output: Filtered descriptions saved in `results/refinebio_descriptions_filtered.tsv`.
+  - Accession codes saved in `results/IDs.tsv`.
+
+### 2. Preprocess the Extracted Descriptions
+- **Text Preprocessing**: The `preprocess.py` script cleans and preprocesses the extracted descriptions by removing URLs, specific strings, file names, non-UTF-8 characters, and applying text normalization techniques.
+  - Output: Preprocessed descriptions saved in a new file for embedding generation.
+
+### 3. Generate Embeddings for Processed Descriptions
+- **Embedding Generation**: The `run_embedding_lookup_table.sh` script calls `embedding_lookup_table.py` to generate embeddings for the preprocessed descriptions using a pre-trained language model (BiomedBERT).
+  - Output: Embeddings saved in `my_custom_embeddings.npz`.
+
+### 4. Run Predictions Using MONDO Model Files
+- **Predictions**: The `predict.py` script is used to run predictions for each MONDO model file using the generated embeddings and filtered descriptions.
+  - Output: Prediction results saved in `prediction_results/`.
+
+## How to Run the Workflow
+
+1. Clone this repository to your local machine:
+   ```bash
+   git clone https://github.com/krishnanlab/Workflow_related_studies.git
+   cd Workflow_related_studies
