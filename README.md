@@ -36,15 +36,15 @@ This repository contains a  workflow for finding public RNA-seq samples and stud
 
 ### 2. Preprocess the Extracted Descriptions
 - **Text Preprocessing**: The `preprocess.py` script cleans and preprocesses the extracted descriptions by removing URLs, specific strings, file names, non-UTF-8 characters, and applying text normalization techniques.
-  - Output: Preprocessed descriptions saved in a new file for embedding generation.
+  - Output: Preprocessed descriptions saved in `results/processed_refinebio_descriptions.tsv` for embedding generation.
 
 ### 3. Generate Embeddings for Processed Descriptions
 - **Embedding Generation**: The `run_embedding_lookup_table.sh` script calls `embedding_lookup_table.py` to generate embeddings for the preprocessed descriptions using a pre-trained language model (BiomedBERT).
-  - Output: Embeddings saved in `my_custom_embeddings.npz`.
+  - Output: Embeddings saved in `results/my_custom_embeddings.npz`.
 
 ### 4. Run Predictions Using MONDO Model Files
-- **Predictions**: The `predict.py` script is used to run predictions for each MONDO model file using the generated embeddings and filtered descriptions.
-  - Output: Prediction results saved in `prediction_results/`.
+- **Predictions**: The `predict.py` script is used to run predictions for each MONDO model file using the generated embeddings and preprocessed descriptions.
+  - Output: Prediction results saved in `prediction_results/`folder.
 
 ## How to Run the Workflow
 
