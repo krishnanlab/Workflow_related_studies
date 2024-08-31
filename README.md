@@ -30,7 +30,7 @@ This repository contains a  workflow for finding public RNA-seq samples and stud
 ## Workflow Overview
 
 ### 1. Data Extraction and Filtering
-- **Extract Descriptions**: The script `extract_data.py` reads and parses the compressed JSON metadata file located in `data/aggregated_metadata.json.gz`. It filters out entries with no descriptions based on a predefined list of terms.
+- **Extract Descriptions**: The script `extract_data.py` reads and parses the compressed JSON metadata file located in `data/aggregated_metadata.json.gz`. It filters out entries with no descriptions.
   - Output: Filtered descriptions saved in `results/refinebio_descriptions_filtered.tsv`.
   - Accession codes saved in `results/IDs.tsv`.
 
