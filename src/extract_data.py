@@ -6,8 +6,8 @@ import pandas as pd
 
 # File paths
 input_file = 'data/aggregated_metadata.json.gz'
-output_desc_file = 'data/refinebio_descriptions_filtered.tsv'
-output_ids_file = 'data/IDs.tsv'
+output_desc_file = 'results/refinebio_descriptions_filtered.tsv'
+output_ids_file = 'results/IDs.tsv'
 
 # Load and parse the compressed JSON file
 with gzip.open(input_file, 'rt', encoding='utf-8') as f:
