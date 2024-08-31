@@ -18,7 +18,7 @@ This repository contains a  workflow for finding public RNA-seq samples and stud
 
 - **results/**: Contains the filtered descriptions and accession codes after preprocessing the metadata.
   - `IDs.tsv`: List of accession codes after filtering out studies with no description.
-  - `refinebio_descriptions_filtered.tsv`: Descriptions of the RNA-seq experiments after filtering out entries with no relevant description.
+  - `refinebio_descriptions_filtered.tsv`: Descriptions of the RNA-seq experiments after filtering out studies with no description.
 - **run/**: 
   - `run_extraction.sh`: Shell script for extracting and filtering descriptions.
   - `run_embedding_lookup_table.sh`: Shell script to generate embeddings for preprocessed descriptions.
