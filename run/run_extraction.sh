@@ -1,2 +1,2 @@
 #!/bin/bash
-python /src/extract_descriptions.py
+python /src/extract_data.py
