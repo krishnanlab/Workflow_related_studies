@@ -8,7 +8,7 @@ This repository contains a  workflow for finding public RNA-seq samples and stud
    - Contains MONDO model files (`*.pkl`) that are used to make predictions. These models are pretrained and ready to use with the provided data.
 -  **data/**: 
      - `aggregated_metadata.json.gz`: Compressed JSON file containing metadata about RNA-seq experiments from refine.bio
-     - `true_label__inst_type=study__task=disease.csv.gz`: Compressed CSV file with true labels related to the diseases of interest.
+     - `true_label__inst_type=study__task=disease.csv.gz`: Compressed CSV file with true labels that includes redundant and non-redundant MONDO terms.
 - **src/**: 
   - `extract_data.py`: Script to extract descriptions and accession codes from the compressed JSON metadata file.
   - `preprocess.py`: Script to  preprocess the extracted descriptions.
