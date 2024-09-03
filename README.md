@@ -11,9 +11,9 @@ This repository contains a  workflow for finding public RNA-seq samples and stud
      - `true_label__inst_type=study__task=disease.csv.gz`: Compressed CSV file with true labels related to the diseases of interest.
 - **src/**: 
   - `extract_data.py`: Script to extract descriptions and accession codes from the compressed JSON metadata file.
-  - `preprocess.py`: Script to clean and preprocess the extracted descriptions.
+  - `preprocess.py`: Script to  preprocess the extracted descriptions.
   - `embedding_lookup_table.py`: Script to generate embeddings for preprocessed descriptions.
-  - `tfidf_calculator.py`: script to calculate TF-IDF scores for text data.
+  - `tfidf_calculator.py`: Script to calculate TF-IDF scores for text data.
   - `predict.py`: Script to run predictions using pre-trained MONDO models.
 
 - **results/**: Contains the filtered descriptions and accession codes after preprocessing the metadata.
