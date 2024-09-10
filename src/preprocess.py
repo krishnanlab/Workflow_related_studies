@@ -167,23 +167,44 @@ def preprocess(text, stopwords=set(nltk.corpus.stopwords.words("english")),
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument("-input",
-                        help="input text, one instance per line",
+                        help="input TSV file with IDs and text",
                         required=True,
                         type=str)
-    parser.add_argument("-out",
-                        help="processed text",
+    parser.add_argument("-out_text",
+                        help="output file for processed text",
+                        required=True,
+                        type=str)
+    parser.add_argument("-out_ids",
+                        help="output file for IDs",
                         required=True,
                         type=str)
     args = parser.parse_args()
 
     # preprocess
-    processed = []
+    processed_text = []
+    retained_ids = []
+
     with open(args.input) as f:
         lines = f.readlines()
-        for line in tqdm(lines, total=len(lines), desc='preprocessing text'):
-            processed.append(preprocess(line.rstrip(), lemmatize=False))
+        for line in tqdm(lines, total=len(lines), desc='Preprocessing text'):
+            # Assume the input is tab-separated with ID in the first column and text in the second
+            columns = line.rstrip().split('\t')
+            if len(columns) < 2:
+                continue  # Skip if the line doesn't have enough columns
+            study_id, text = columns[0], columns[1]
+            processed_text = preprocess(text, lemmatize=False)
 
-    # output
-    with open(args.out, 'w') as f:
-        for i in processed:
-            f.write(f'{i}\n')
+            if processed_text:  # Only keep non-empty processed text
+                retained_ids.append(study_id)
+                processed_texts.append(processed_text)
+
+    # Write processed text to output file
+    with open(args.out_text, 'w') as text_file:
+        for text in processed_texts:
+            text_file.write(f'{text}\n')
+
+    # Write IDs of retained texts to a separate file
+    with open(args.out_ids, 'w') as id_file:
+        for study_id in retained_ids:
+            id_file.write(f'{study_id}\n')
+
